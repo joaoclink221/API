@@ -1,5 +1,5 @@
-import * as db from "../repository/tvrepository.js";
 import { Router } from "express";
+import salvarCanal from "../service/canal/salvarCanalService.js";
 
 const endpoint = Router();
 
@@ -7,7 +7,7 @@ const endpoint = Router();
 endpoint.post("/canal", async (req, resp) => {
   try {
     let canal = req.body;
-    let id = await db.inserirCanal(canal);
+    let id = salvarCanal(canal)
     resp.send({
       id: id
     });
